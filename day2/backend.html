@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Back end</h1>
+    <form id="company">
+        <input id="name" type="text" placeholder="Enter Name">
+        <input id="imgURL" type="text" placeholder="paste image">
+        <input id="companylogo" type="text" placeholder="logo">
+        <input id="role" type="text" placeholder="Enter role">
+        <input type="submit"/>
+    </form>
+</body>
+</html>
+
+<script>
+    document.querySelector("#company").addEventListener("submit",comFun);
+    //store in array of objects
+
+    var companyArray=JSON.parse(localStorage.getItem("companyArray"))||[]
+    function comFun(){
+        event.preventDefault();
+        var compobj={
+            name:company.name.value,
+            image:company.imgURL.value,
+            logo: company.companylogo.value,
+            roles: company.role.value
+
+        };
+        companyArray.push(compobj);
+        console.log(companyArray);
+        localStorage.setItem("companyArray",JSON.stringify(companyArray))
+    }
+</script>
